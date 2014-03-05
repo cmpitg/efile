@@ -842,6 +842,8 @@ def showDeleteFileConfirmDialog(path):
 
 directories = [directory for directory in sys.argv if isDir(directory)] or [""]
 
-# app = QApplication(sys.argv)
-# mainWin = MainWindow()
-# sys.exit(app.exec_())
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    mainWin = MainWindow()
+    sys.exit(app.exec_())
