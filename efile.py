@@ -841,7 +841,7 @@ def showDeleteFileConfirmDialog(path):
 
 
 directories = [directory for directory in sys.argv if isDir(directory)] \
-              or [DEFAULT_ROOT_PATHt]
+              or [DEFAULT_ROOT_PATH]
 
 
 if __name__ == "__main__":
