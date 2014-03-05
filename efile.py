@@ -634,7 +634,7 @@ class MyTreeView(QTreeView):
         print("")
 
     def mouseDoubleClickEvent(self, event):
-        if event.button() == Qt.MouseButton.LeftButton \
+        if event.button() == Qt.LeftButton \
            and len(self.selectedItems()) != 0:
             item = self.selectedItems()[0]
             os.system('emacsclient --eval \'(find-file "{0}")\''.format(item))
