@@ -696,10 +696,10 @@ class MyTreeView(QTreeView):
             self.showContextMenu(event)
 
 
-class MainWindow(QWidget):
+class BrowserWindow(QWidget):
 
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super(BrowserWindow, self).__init__()
 
         self.resize(350, 650)
         self.move(0, 0)
@@ -846,5 +846,5 @@ directories = [directory for directory in sys.argv if isDir(directory)] \
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    mainWin = MainWindow()
+    mainWin = BrowserWindow()
     sys.exit(app.exec_())
