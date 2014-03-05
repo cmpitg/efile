@@ -850,5 +850,5 @@ print("Path list: ", directories)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    mainWin = BrowserWindow()
+    windows = [BrowserWindow(path=path) for path in directories]
     sys.exit(app.exec_())
