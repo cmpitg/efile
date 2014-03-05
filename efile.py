@@ -709,7 +709,11 @@ class BrowserWindow(QWidget):
 
         self.createChildren()
         self.setWindowIcon(getOpenDirIcon())
+
         self.show()
+
+    def reSetTitle(self, title):
+        self.setWindowTitle("Efile: {}".format(title))
 
     def createChildren(self):
         box = QVBoxLayout()
@@ -718,6 +722,7 @@ class BrowserWindow(QWidget):
         self.createTreeView()
 
         self.pathEntry.textChanged.connect(self.tree.setPath)
+        self.pathEntry.textChanged.connect(self.reSetTitle)
         self.pathEntry.textEdited.connect(self.clearFilterEntry)
         self.filterEntry.textEdited.connect(self.tree.filterFiles)
 
