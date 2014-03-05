@@ -705,7 +705,7 @@ class BrowserWindow(QWidget):
 
         self.resize(350, 650)
         self.move(0, 0)
-        self.setWindowTitle("File Browser for Emacs Server")
+        self.setWindowTitle("Efile: {}".format(self.startPath))
 
         self.createChildren()
         self.setWindowIcon(getOpenDirIcon())
