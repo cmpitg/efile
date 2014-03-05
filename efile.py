@@ -568,8 +568,9 @@ def getOpenDirIcon():
 
 class MyTreeView(QTreeView):
 
-    def __init__(self):
+    def __init__(self, path=DEFAULT_ROOT_PATH):
         super(MyTreeView, self).__init__()
+        self.startPath = path
 
         self.createModel()
         self.createContextMenu()
@@ -582,7 +583,7 @@ class MyTreeView(QTreeView):
         model = QFileSystemModel()
         self.model = model
         self.setModel(model)
-        self.setPath(getRootPath())
+        self.setPath(self.startPath)
 
     def setPath(self, path):
         path = expandPath(path)
@@ -698,8 +699,9 @@ class MyTreeView(QTreeView):
 
 class BrowserWindow(QWidget):
 
-    def __init__(self):
+    def __init__(self, path=DEFAULT_ROOT_PATH):
         super(BrowserWindow, self).__init__()
+        self.startPath = path
 
         self.resize(350, 650)
         self.move(0, 0)
@@ -746,7 +748,7 @@ class BrowserWindow(QWidget):
         button.setDefaultAction(action)
 
         pathEntry = QLineEdit()
-        pathEntry.setText(getRootPath())
+        pathEntry.setText(self.startPath)
         focusShortcut = QShortcut(QKeySequence("Ctrl+L"), pathEntry)
         focusShortcut.activated.connect(pathEntry.setFocus)
 
@@ -758,7 +760,7 @@ class BrowserWindow(QWidget):
         self.browseDirButton = button
 
     def createTreeView(self):
-        tree = MyTreeView()
+        tree = MyTreeView(self.startPath)
 
         self.tree = tree
 
