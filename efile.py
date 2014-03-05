@@ -41,6 +41,8 @@
 #
 # * Expand path (Done)
 #
+# * Take command line argument: path to the directory
+#
 
 
 import sys
@@ -838,6 +840,8 @@ def showDeleteFileConfirmDialog(path):
     return [True, False][msgbox.exec_() == QMessageBox.No]
 
 
-app = QApplication(sys.argv)
-mainWin = MainWindow()
-sys.exit(app.exec_())
+directories = [directory for directory in sys.argv if isDir(directory)] or [""]
+
+# app = QApplication(sys.argv)
+# mainWin = MainWindow()
+# sys.exit(app.exec_())
