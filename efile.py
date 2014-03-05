@@ -568,9 +568,10 @@ def getOpenDirIcon():
 
 class MyTreeView(QTreeView):
 
-    def __init__(self, path=DEFAULT_ROOT_PATH):
+    def __init__(self, path=DEFAULT_ROOT_PATH, browserWindow=None):
         super(MyTreeView, self).__init__()
         self.startPath = path
+        self.browserWindow = browserWindow
 
         self.createModel()
         self.createContextMenu()
@@ -663,7 +664,7 @@ class MyTreeView(QTreeView):
         items = self.selectedItems()
         if len(items) == 1:
             path = items[0]
-            setPath(path)
+            self.browserWindow.setPath(path)
 
     def createContextMenu(self):
         menu = QMenu(self)
@@ -765,7 +766,8 @@ class BrowserWindow(QWidget):
         self.browseDirButton = button
 
     def createTreeView(self):
-        tree = MyTreeView(self.startPath)
+        tree = MyTreeView(path=self.startPath,
+                          browserWindow = self)
 
         self.tree = tree
 
@@ -831,10 +833,6 @@ def getRootPath():
 
 def isDir(path):
     return os.path.isdir(expandPath(path))
-
-
-def setPath(path):
-    mainWin.setPath(path)
 
 
 def showDeleteFileConfirmDialog(path):
