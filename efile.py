@@ -842,8 +842,10 @@ def showDeleteFileConfirmDialog(path):
     return [True, False][msgbox.exec_() == QMessageBox.No]
 
 
-directories = [directory for directory in sys.argv if isDir(directory)] \
+directories = [expandPath(directory) for directory in sys.argv
+               if isDir(expandPath(directory))] \
               or [DEFAULT_ROOT_PATH]
+print("Path list: ", directories)
 
 
 if __name__ == "__main__":
